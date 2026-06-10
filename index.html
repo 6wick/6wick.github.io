@@ -597,6 +597,97 @@
       transform: translateY(0);
     }
 
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-cv:hover { border-color: var(--accent); color: var(--accent); }
+
+    .cv-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cv-modal.open { display: flex; }
+
+    .cv-modal-inner {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      height: 90vh;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .cv-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .cv-modal-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cv-modal-download:hover { background: #e85a1e; }
+
+    .cv-modal-close {
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .cv-modal-close:hover { background: #444; }
+
+    .cv-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* ── DIPLOMES ── */
     .diplome-card {
       display: flex;
@@ -690,6 +781,7 @@
       <div class="hero-cta">
         <a href="#projects" class="btn-primary">Voir mes projets →</a>
         <a href="#contact" class="btn-outline">Me contacter</a>
+        <button class="btn-cv" onclick="document.getElementById('cv-modal').classList.add('open')">📄 Mon CV</button>
       </div>
     </div>
     <div class="hero-diplomes reveal" style="flex-shrink:0; width:300px;">
@@ -839,12 +931,40 @@
         </div>
       </article>
 
-    </div>
-  </section>
+      <!-- Projet 4 : Portfolio -->
+      <article class="project-card reveal" data-status="Fait" style="transition-delay:0.3s">
+        <div class="project-header">
+          <h3 class="project-title">Portfolio Personnel</h3>
+          <span class="project-status status-fait">Fait</span>
+        </div>
+        <p class="project-desc">
+          Création de ce portfolio de A à Z en HTML, CSS et JavaScript. Design dark mode avec accent orange, responsive sur mobile/tablette/desktop, animations au scroll, filtre des projets par tag et déployé sur GitHub Pages.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">GitHub Pages</span>
+          <span class="project-tag">Responsive</span>
+        </div>
+      </article>
 
-  <hr class="section-divider" />
-
-  <!-- CONTACT -->
+      <!-- Projet 5 : PNetLab -->
+      <article class="project-card reveal" data-status="Fait" style="transition-delay:0.4s">
+        <div class="project-header">
+          <h3 class="project-title">Infrastructure réseau sur PNetLab</h3>
+          <span class="project-status status-fait">Fait</span>
+        </div>
+        <p class="project-desc">
+          Infrastructure complète d'un schéma de réseau avec des PC clients, des switchs et des routeurs.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">PNetLab</span>
+          <span class="project-tag">Routing</span>
+          <span class="project-tag">Switching</span>
+          <span class="project-tag">OSPF</span>
+        </div>
+      </article>
   <section id="contact">
     <p class="section-label reveal">Contact</p>
     <div class="contact-grid">
@@ -891,6 +1011,20 @@
       </div>
     </div>
   </section>
+
+  <!-- MODALE CV -->
+  <div id="cv-modal" class="cv-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="cv-modal-inner">
+      <div class="cv-modal-header">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:0.85rem; font-weight:600; color:var(--text-muted);">CV — Mail Mentes</span>
+        <div style="display:flex; gap:0.5rem;">
+          <a href="cv.pdf" download="CV_Mail_Mentes.pdf" class="cv-modal-download">⬇ Télécharger</a>
+          <button class="cv-modal-close" onclick="document.getElementById('cv-modal').classList.remove('open')">✕</button>
+        </div>
+      </div>
+      <iframe src="cv.pdf" class="cv-iframe" title="CV Mail Mentes"></iframe>
+    </div>
+  </div>
 
   <footer>
     <p>© 2026 Mail Mentes — Construit avec <span>♥</span> en HTML/CSS/JS</p>
