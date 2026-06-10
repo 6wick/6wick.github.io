@@ -597,7 +597,44 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── DIPLOMES ── */
+    .diplome-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s;
+    }
+
+    .diplome-card:hover { border-color: rgba(255,107,43,0.3); }
+
+    .diplome-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .diplome-card strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 0.2rem;
+    }
+
+    .diplome-card span {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero-diplomes { width: 100%; }
+    }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
@@ -645,13 +682,39 @@
   </div>
 
   <!-- HERO -->
-  <section id="hero" style="position:relative;">
-    <p class="hero-eyebrow">Étudiant IT</p>
-    <h1 class="hero-name">Mail<br>Mentes</h1>
-    <p class="hero-desc">En formation Bachelor IT à Geneva Institute of Technology.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">Voir mes projets →</a>
-      <a href="#contact" class="btn-outline">Me contacter</a>
+  <section id="hero" style="position:relative; display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
+    <div style="flex:1; min-width:280px;">
+      <p class="hero-eyebrow">Étudiant IT</p>
+      <h1 class="hero-name">Mail<br>Mentes</h1>
+      <p class="hero-desc">En formation Bachelor IT à Geneva Institute of Technology.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">Voir mes projets →</a>
+        <a href="#contact" class="btn-outline">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-diplomes reveal" style="flex-shrink:0; width:300px;">
+      <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem;">Diplômes</p>
+      <div class="diplome-card">
+        <div class="diplome-icon">🎓</div>
+        <div>
+          <strong>Baccalauréat Technologique STI2D</strong>
+          <span>Mention Assez Bien</span>
+        </div>
+      </div>
+      <div class="diplome-card">
+        <div class="diplome-icon">📜</div>
+        <div>
+          <strong>Diplôme National du Brevet</strong>
+          <span>Mention Assez Bien</span>
+        </div>
+      </div>
+      <div class="diplome-card">
+        <div class="diplome-icon">💻</div>
+        <div>
+          <strong>Bachelor Informatique — 1ère année</strong>
+          <span style="color:var(--text-muted);">En cours</span>
+        </div>
+      </div>
     </div>
     <a href="#about" class="hero-scroll" aria-label="Défiler vers le bas">
       <svg viewBox="0 0 16 16" stroke-width="1.5"><path d="M8 2v12M3 9l5 5 5-5"/></svg>
